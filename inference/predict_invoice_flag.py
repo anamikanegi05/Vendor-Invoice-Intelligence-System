@@ -1,8 +1,11 @@
 import joblib
 import pandas as pd
+from pathlib import Path
 
-MODEL_PATH = r"C:\Users\Anami\Desktop\Intelligence-System\models\predict_flag_invoice.pkl"
-SCALER_PATH = r"C:\Users\Anami\Desktop\Intelligence-System\models\scaler.pkl"
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MODEL_PATH = BASE_DIR / "models" / "predict_flag_invoice.pkl"
+SCALER_PATH = BASE_DIR / "models" / "scaler.pkl"
 
 
 def load_model():
@@ -30,7 +33,9 @@ def predict_invoice_flag(input_data):
 
     model_input = input_df[features]
     model_input_scaled = scaler.transform(model_input)
+
     predictions = model.predict(model_input_scaled)
+
     input_df["Predicted_Flag"] = predictions.astype(int)
 
     return input_df
