@@ -1,8 +1,7 @@
 import joblib
 from pathlib import Path
-
-from invoice_flagging.data_preprocessing import load_vendor_invoice_data, prepare_features, split_data
-from model_evaluation import (
+from freight_cost_prediction.data_preprocessing import load_vendor_invoice_data, prepare_features, split_data
+from freight_cost_prediction.model_evaluation import (
     train_linear_regression,
     train_decision_tree,
     train_random_forest,
